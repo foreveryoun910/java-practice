@@ -19,9 +19,9 @@ public class MemoList implements MemoAccess {
 			Scanner scanner = new Scanner(new File(path));
 			while(true) {
 				if(! scanner.hasNext()) break;
-				String str = scanner.next();
-				//if(str == null) break;
-				String[] arr = str.split(" / ");
+				String str = scanner.nextLine();
+				if(str == null) break;
+				String[] arr = str.split(":");
 				memos.add(new Memo(arr[0], arr[1]));
 			}
 			scanner.close();
@@ -35,7 +35,7 @@ public class MemoList implements MemoAccess {
 		try {
 			BufferedWriter bf = new BufferedWriter(new FileWriter(path));
 			for(Memo m : memos) {
-				bf.write(String.format("%s / %s\n", m.getDate(), m.getClass()));
+				bf.write(String.format("%s %s\n", m.getDate(), m.getContent()));
 			} bf.close();
 		} catch(Exception e) {
 			e.printStackTrace();
