@@ -4,9 +4,8 @@ import java.util.List;
 import java.util.Scanner;
 
 public class BookServiceFind implements BookService {
-
+	BookList bookList = new BookList();
 	Scanner scanner = new Scanner(System.in);
-	BookList list = new BookList();
 	
 	//이름을 입력하면 이름을 포함하는 모든 도서를 출력
 	@Override
